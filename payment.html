@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme - Mux Editor Clan</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="payment.css">
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MUX</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="project.html">Projeler</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="payment-container">
+            <div class="package-summary" id="packageSummary">
+                <h2>Sipariş Özeti</h2>
+                <div class="package-info">
+                    <h3 id="selectedPackageName">Premium XML Paketi</h3>
+                    <div class="package-price" id="selectedPackagePrice">₺50</div>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <div class="auth-section">
+                    <h2>Discord ile Giriş</h2>
+                    
+                    <button class="discord-login" onclick="loginWithDiscord()">
+                        <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord" style="width: 20px; height: 20px;">
+                        Discord ile Giriş Yap
+                    </button>
+
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <div class="user-profile">
+                            <img id="userAvatar" src="" alt="Avatar" class="profile-pic">
+                            <div>
+                                <p>Hoş geldin, <span id="userName"></span>!</p>
+                                <p>Discord: <span id="userDiscord"></span></p>
+                                <p>Email: <span id="userEmail"></span></p>
+                            </div>
+                        </div>
+                        <button onclick="signOut()" class="signout-btn">Çıkış Yap</button>
+                    </div>
+                </div>
+
+                <div class="payment-section" id="paymentSection" style="display: none;">
+                    <h2>Ödeme Yöntemi Seçin</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPaymentMethod('card')">
+                            <div class="method-icon">💳</div>
+                            <div class="method-info">
+                                <h3>Kredi/Banka Kartı</h3>
+                                <p>Visa, MasterCard, Troy</p>
+                            </div>
+                            <div class="method-check" id="check-card"></div>
+                        </div>
+
+                        <div class="payment-method" onclick="selectPaymentMethod('bank')">
+                            <div class="method-icon">🏦</div>
+                            <div class="method-info">
+                                <h3>İnternet Bankacılığı</h3>
+                                <p>Tüm bankalar desteklenir</p>
+                            </div>
+                            <div class="method-check" id="check-bank"></div>
+                        </div>
+
+                        <div class="payment-method" onclick="selectPaymentMethod('paypal')">
+                            <div class="method-icon">📱</div>
+                            <div class="method-info">
+                                <h3>PayPal QR</h3>
+                                <p>QR kod ile hızlı ödeme</p>
+                            </div>
+                            <div class="method-check" id="check-paypal"></div>
+                        </div>
+                    </div>
+
+                    <!-- Kart Ödeme Formu -->
+                    <div class="payment-form" id="cardForm" style="display: none;">
+                        <h3>💳 Kart Bilgileri</h3>
+                        <form id="paymentForm">
+                            <div class="form-group">
+                                <label>Kart Numarası</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Son Kullanma</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Kart Üzerindeki İsim</label>
+                                <input type="text" id="cardName" placeholder="JOHN DOE">
+                            </div>
+
+                            <button type="submit" class="pay-button">
+                                💳 Ödemeyi Tamamla - <span id="finalPrice">₺50</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Banka Ödeme Formu -->
+                    <div class="payment-form" id="bankForm" style="display: none;">
+                        <h3>🏦 İnternet Bankacılığı</h3>
+                        <div class="bank-options">
+                            <div class="bank-grid">
+                                <div class="bank-option" onclick="selectBank('garanti')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>Garanti BBVA</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('isbank')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>İş Bankası</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('akbank')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>Akbank</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('yapikredi')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>Yapı Kredi</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('halkbank')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>Halkbank</span>
+                                </div>
+                                <div class="bank-option" onclick="selectBank('ziraat')">
+                                    <div class="bank-logo">🏦</div>
+                                    <span>Ziraat Bankası</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pay-button" onclick="processPayment('bank')">
+                            🏦 Bankama Yönlendir - <span id="finalPriceBank">₺50</span>
+                        </button>
+                    </div>
+
+                    <!-- PayPal QR Ödeme -->
+                    <div class="payment-form" id="paypalForm" style="display: none;">
+                        <h3>📱 PayPal QR Ödeme</h3>
+                        <div class="qr-container">
+                            <div class="qr-code">
+                                <div id="paypalQR">
+                                    <!-- QR kod buraya gelecek -->
+                                    <div class="qr-placeholder">
+                                        <div class="qr-grid"></div>
+                                        <p>PayPal QR Kodunuz</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qr-instructions">
+                                <h4>📱 Nasıl Ödeme Yapılır?</h4>
+                                <ol>
+                                    <li>PayPal uygulamasını açın</li>
+                                    <li>QR kod tarayıcısını kullanın</li>
+                                    <li>Yukarıdaki kodu tarayın</li>
+                                    <li>Ödemeyi onaylayın</li>
+                                </ol>
+                                <div class="payment-amount">
+                                    <span>Ödeme Tutarı: <strong id="finalPricePaypal">₺50</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pay-button" onclick="checkPaypalPayment()">
+                            📱 Ödeme Yapıldı, Kontrol Et
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-modal" id="successModal" style="display: none;">
+            <div class="modal-content">
+                <h2>✅ Ödeme Başarılı!</h2>
+                <p>XML paketiniz <strong id="deliveryEmail"></strong> adresine gönderildi!</p>
+                <div id="downloadSection"></div>
+                <button onclick="closeModal()">Ana Sayfaya Dön</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="payment.js"></script>
+</body>
+</html>

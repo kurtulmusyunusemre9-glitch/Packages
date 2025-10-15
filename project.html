@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeler - Mux Editor Clan</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/project site/project.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MUX</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Ana Sayfa</a></li>
+                <li><a href="#xmls">XML Paketler</a></li>
+                <li><a href="#editing">Özel Düzenleme</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Projelerimiz</h1>
+                <p>Profesyonel XML paketleri ve özel düzenleme hizmetleri</p>
+            </div>
+        </section>
+
+        <section id="xmls" class="xml-packages">
+            <div class="container">
+                <h2>XML Paketlerimiz</h2>
+                <div class="package-grid">
+                    <div class="package-card">
+                        <h3>Temel XML Paketi</h3>
+                        <div class="price">$5</div>
+                        <ul>
+                            <li>✅ 10 Transition Efekti</li>
+                            <li>✅ 5 Text Animation</li>
+                            <li>✅ Color Correction Presets</li>
+                            <li>✅ Temel Sound Effects</li>
+                        </ul>
+                        <button class="buy-button" onclick="buyPackage('basic')">Satın Al</button>
+                    </div>
+
+                    <div class="package-card premium">
+                        <div class="popular-badge">En Popüler</div>
+                        <h3>Premium XML Paketi</h3>
+                        <div class="price">$15</div>
+                        <ul>
+                            <li>✅ 25 Transition Efekti</li>
+                            <li>✅ 15 Text Animation</li>
+                            <li>✅ Advanced Color Grading</li>
+                            <li>✅ Professional Sound Pack</li>
+                            <li>✅ Custom Lower Thirds</li>
+                            <li>✅ Motion Graphics</li>
+                        </ul>
+                        <button class="buy-button" onclick="buyPackage('premium')">Satın Al</button>
+                    </div>
+
+                    <div class="package-card">
+                        <h3>Pro XML Paketi</h3>
+                        <div class="price">$100</div>
+                        <ul>
+                            <li>✅ 50+ Transition Efekti</li>
+                            <li>✅ 30+ Text Animation</li>
+                            <li>✅ Cinema Color Grading</li>
+                            <li>✅ Exclusive Sound Library</li>
+                            <li>✅ Custom Templates</li>
+                            <li>✅ 3D Motion Graphics</li>
+                            <li>✅ Lifetime Updates</li>
+                        </ul>
+                        <button class="buy-button" onclick="buyPackage('pro')">Satın Al</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="editing" class="custom-editing">
+            <div class="container">
+                <h2>Özel Düzenleme Hizmetleri</h2>
+                <p>İhtiyaçlarınıza özel video düzenleme yapıyoruz</p>
+                <button class="contact-button" onclick="customOrder()">Özel Sipariş Ver</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mux Editor Clan. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="/project site/project.js"></script>
+</body>
+</html>

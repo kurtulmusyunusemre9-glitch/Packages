@@ -1,0 +1,210 @@
+/* Projects sayfasına özel stiller */
+.xml-packages {
+    padding: 80px 0;
+    background: #2d2d2d;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.xml-packages h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #ff6b35;
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.package-card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.package-card:hover {
+    border-color: #ff6b35;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+}
+
+.package-card.premium {
+    border-color: #ff6b35;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a1f1a 100%);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #ff6b35;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.package-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff6b35;
+    margin-bottom: 1.5rem;
+}
+
+.package-card ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.package-card li {
+    padding: 0.5rem 0;
+    color: #cccccc;
+    border-bottom: 1px solid #333;
+}
+
+.package-card li:last-child {
+    border-bottom: none;
+}
+
+.buy-button {
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+@media (max-width: 768px) {
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .xml-packages h2 {
+        font-size: 2rem;
+    }
+}
+.download-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+.download-section h3 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.download-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.download-link {
+    background: #2d2d2d;
+    color: #ff6b35;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.download-link:hover {
+    background: #3d3d3d;
+}
+
+.download-all-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ff6b35;
+}
+
+.signout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.download-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #2d2d2d;
+    border-radius: 10px;
+}
+
+.download-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.download-link {
+    background: #1a1a1a;
+    color: #ff6b35;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid #333;
+}
+
+.download-link:hover {
+    background: #ff6b35;
+    color: white;
+    transform: translateY(-2px);
+}
